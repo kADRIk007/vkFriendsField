@@ -1,0 +1,72 @@
+.wrapper {
+	width: 730px;
+	margin: 20px auto;
+}
+
+.friends-container {
+	height: 420px;
+	overflow-y: scroll;
+}
+
+.friend {
+	margin: 10px;
+	border-bottom: 1px solid #eaeaea;
+	padding-bottom: 4px;
+}
+
+.photo {
+	border-radius: 50%;
+	width: 50px;
+}
+
+.header_title {
+	background-color: #ff8663;
+	color: #FFF;
+	font-size: 20px;
+	padding: 10px;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.search_block {
+	padding: 10px;
+	background-color: #f0f0f0;
+}
+
+.search_block input {
+	width: 44.7%;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 27px;
+	margin: 0px 10px 0px 0px;
+}
+
+.search_block input:focus {
+	outline: none;
+}
+
+.inner {
+	padding: 0px 10px;
+}
+
+.inner p {
+	margin: 0px 20px 0px 0px;
+	border-bottom: 1px solid #f0f0f0;
+	padding: 10px 0px 5px 0px;
+}
+
+.left-colum {
+	float: left;
+	width: 50%;
+}
+
+.right-colum {
+	float: left;
+	width: 50%;
+}
+
+.name {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 13px;
+	margin-left: 5px;
+}
