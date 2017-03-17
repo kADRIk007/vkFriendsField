@@ -48,6 +48,13 @@
 	padding: 0px 10px;
 }
 
+.inner:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
 .inner p {
 	margin: 0px 20px 0px 0px;
 	border-bottom: 1px solid #f0f0f0;
@@ -83,5 +90,31 @@
 }
 
 .role-button:focus {
+	outline: none;
+}
+
+.footer {
+	padding: 12px;
+	background-color: #f0f0f0;
+	border-radius: 0px 0px 20px 20px;
+}
+
+.footer:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+#save {
+	background-color: #ff8663;
+	border: none;
+	color: #FFFFFF;
+	border-radius: 20px;
+	padding: 10px 20px;
+	float: right;
+	cursor: pointer;
+}
+
+#save:focus {
 	outline: none;
 }
