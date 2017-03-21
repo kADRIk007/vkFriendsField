@@ -12,6 +12,12 @@
 	margin: 10px;
 	border-bottom: 1px solid #eaeaea;
 	padding-bottom: 4px;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 320px;
+	background-color: #fff;
+	padding: 0px 0px 4px 0px;
 }
 
 .photo {
