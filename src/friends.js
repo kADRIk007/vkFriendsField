@@ -262,7 +262,7 @@ login()
                         if (!dropElem) {
                             self.onDragCancel(dragObject);
                         } else {
-                            self.onDragEnd(dragObject, dropElem);
+                            self.onDragEnd(dragObject, dropElem)
                         }
                     }
 
@@ -284,8 +284,8 @@ login()
                         // получить самый вложенный элемент под курсором мыши
                         var elem = document.elementFromPoint(event.clientX, event.clientY);
 
-                        // показать переносимый элемент обратно
-                        dragObject.avatar.hidden = false;
+                        // // показать переносимый элемент обратно
+                        // dragObject.avatar.hidden = false;
 
                         if (elem == null) {
                             // такое возможно, если курсор мыши "вылетел" за границу окна
@@ -300,12 +300,24 @@ login()
                     document.onmousedown = onMouseDown;
 
                     this.onDragEnd = function(dragObject, dropElem) {
+                        for (let i = 0; i < newFriendsInListArray.length; i++) {
 
+                            if (newFriendsInListArray[i].id == dragObject.elem.dataset.id) {
+                                friendListSortArray.push(newFriendsInListArray[i]);
+                                newFriendsInListArray.splice(i, 1);
+                                break;
+
+                            }
+
+                        }
+
+                        dropElem.innerHTML = createSortDiv(friendListSortArray);
                     };
 
                     this.onDragCancel = function(dragObject) {
                         dragObject.avatar.rollback();
                     };
+
 
                 };
 
@@ -319,6 +331,7 @@ login()
                     };
 
                 }
+
             }
 
             friendListSort.innerHTML = createSortDiv(friendListSortArray);
