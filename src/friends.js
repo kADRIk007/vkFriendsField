@@ -185,9 +185,9 @@ login()
                     }
 
                     function onMouseMove(e) {
-                        if (!dragObject.elem) return; // элемент не зажат
+                        if (!dragObject.elem) return;
 
-                        if (!dragObject.avatar) { // если перенос не начат...
+                        if (!dragObject.avatar) {
                             var moveX = e.pageX - dragObject.downX;
                             var moveY = e.pageY - dragObject.downY;
 
@@ -195,22 +195,19 @@ login()
                                 return;
                             }
 
-                            dragObject.avatar = createAvatar(e); // создать аватар
-                            if (!dragObject.avatar) { // отмена переноса, нельзя "захватить" за эту часть элемента
+                            dragObject.avatar = createAvatar(e);
+                            if (!dragObject.avatar) {
                                 dragObject = {};
                                 return;
                             }
 
-                            // аватар создан успешно
-                            // создать вспомогательные свойства shiftX/shiftY
                             var coords = getCoords(dragObject.avatar);
                             dragObject.shiftX = dragObject.downX - coords.left;
                             dragObject.shiftY = dragObject.downY - coords.top;
 
-                            startDrag(e); // отобразить начало переноса
+                            startDrag(e);
                         }
 
-                        // отобразить перенос объекта при каждом движении мыши
                         dragObject.avatar.style.left = e.pageX - dragObject.shiftX + 'px';
                         dragObject.avatar.style.top = e.pageY - dragObject.shiftY + 'px';
 
@@ -219,7 +216,6 @@ login()
 
                     function createAvatar(e) {
 
-                        // запомнить старые свойства, чтобы вернуться к ним при отмене переноса
                         var avatar = dragObject.elem;
                         var old = {
                             parent: avatar.parentNode,
@@ -232,7 +228,6 @@ login()
                             backgroundColor: avatar.backgroundColor || '',
                         };
 
-                        // функция для отмены переноса
                         avatar.rollback = function() {
                             old.parent.insertBefore(avatar, old.nextSibling);
                             avatar.style.position = old.position;
@@ -247,12 +242,10 @@ login()
                     }
 
                     function onMouseUp(e) {
-                        if (dragObject.avatar) { // если перенос идет
+                        if (dragObject.avatar) {
                             finishDrag(e);
                         }
 
-                        // перенос либо не начинался, либо завершился
-                        // в любом случае очистим "состояние переноса" dragObject
                         dragObject = {};
                     }
 
@@ -269,7 +262,6 @@ login()
                     function startDrag(e) {
                         var avatar = dragObject.avatar;
 
-                        // инициировать начало переноса
                         document.body.appendChild(avatar);
                         avatar.style.zIndex = 9999;
                         avatar.style.position = 'absolute';
@@ -278,17 +270,11 @@ login()
                     }
 
                     function findDroppable(event) {
-                        // спрячем переносимый элемент
                         dragObject.avatar.hidden = true;
 
-                        // получить самый вложенный элемент под курсором мыши
                         var elem = document.elementFromPoint(event.clientX, event.clientY);
 
-                        // // показать переносимый элемент обратно
-                        // dragObject.avatar.hidden = false;
-
                         if (elem == null) {
-                            // такое возможно, если курсор мыши "вылетел" за границу окна
                             return null;
                         }
 
@@ -306,11 +292,9 @@ login()
                                 friendListSortArray.push(newFriendsInListArray[i]);
                                 newFriendsInListArray.splice(i, 1);
                                 break;
-
                             }
 
                         }
-
                         dropElem.innerHTML = createSortDiv(friendListSortArray);
                     };
 
@@ -321,8 +305,7 @@ login()
 
                 };
 
-
-                function getCoords(elem) { // кроме IE8-
+                function getCoords(elem) {
                     var box = elem.getBoundingClientRect();
 
                     return {
@@ -331,7 +314,6 @@ login()
                     };
 
                 }
-
             }
 
             friendListSort.innerHTML = createSortDiv(friendListSortArray);
