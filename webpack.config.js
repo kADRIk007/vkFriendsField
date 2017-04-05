@@ -13,9 +13,12 @@ loaders.push({
 });
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        main: './src/index.js',
+        friends: './src/friends.js'
+    },
     output: {
-        filename: '[hash].js',
+        filename: '[chunkhash].js',
         path: './dist'
     },
     devtool: 'source-map',
@@ -31,8 +34,15 @@ module.exports = {
         }),
         new ExtractTextPlugin('styles.css'),
         new HtmlPlugin({
-            title: 'Loft School sample project',
-            template: 'index.hbs'
+            title: 'Main Homework',
+            template: 'index.hbs',
+            chunks: ['main']
+        }),
+        new HtmlPlugin({
+            title: 'vkFriendsField template',
+            template: 'friends.hbs',
+            filename: 'friends.html',
+            chunks: ['friends']
         }),
         new CleanWebpackPlugin(['dist'])
     ]
